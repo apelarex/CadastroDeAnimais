@@ -2,7 +2,7 @@ package br.com.petshop;
 
 public class Gato extends Animal {
 	private String corPelo;
-	public Gato(String nome, int idade, String corPelo , int peso, int tamanho) {
+	public Gato(String nome, int idade, String corPelo , double peso, String tamanho) {
 		super(nome, idade, peso, tamanho );
 		this.corPelo = corPelo;
 

@@ -3,7 +3,7 @@ package br.com.petshop;
 public class Cachorro extends Animal {
 	private String raca;
 
-	public Cachorro(String nome, int idade, String raca, int peso, int tamanho) {
+	public Cachorro(String nome, int idade, String raca, double peso, String tamanho) {
 		super(nome, idade, peso, tamanho);
 		this.raca = raca;
 

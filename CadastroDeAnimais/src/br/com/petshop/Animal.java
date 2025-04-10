@@ -3,10 +3,10 @@ package br.com.petshop;
 public class Animal {
 	private String nome;
 	private int idade;
-    private int peso;
-    private int tamanho;
+    private double peso;
+    private String tamanho;
    
-	public Animal(String nome, int idade, int peso , int tamanho) {
+	public Animal(String nome, int idade, double peso , String tamanho) {
 		this.nome = nome;
 		this.idade = idade;
 		this.peso = peso;
@@ -21,11 +21,11 @@ public class Animal {
 		return idade;
 	}
 	
-	public int getpeso() {
+	public double getpeso() {
 		return peso;
 	}
 	
-	public int gettamanho() {
+	public String gettamanho() {
 		return tamanho;
 	} 
 	

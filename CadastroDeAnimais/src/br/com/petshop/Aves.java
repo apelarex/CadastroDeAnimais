@@ -3,7 +3,7 @@ package br.com.petshop;
 public class Aves extends Animal {
 	private String TipoDeBico;
 
-	public Aves(String nome, int idade, int peso, int tamanho, String TipoDeBico) {
+	public Aves(String nome, int idade, double peso, String tamanho, String TipoDeBico) {
 
 		super(nome, idade, peso, tamanho);
 		this.TipoDeBico = TipoDeBico;
