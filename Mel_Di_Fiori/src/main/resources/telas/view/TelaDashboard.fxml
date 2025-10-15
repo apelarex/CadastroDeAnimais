@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      spacing="20" alignment="TOP_CENTER"
+      style="-fx-background-color: #8d6035; -fx-padding: 50;"
+      fx:controller="crud_colmeia.DashboardController">  <Label text=" 📊Dashboard do Adestrador"
+           style="-fx-font-size: 20px; -fx-font-weight: 900; -fx-text-fill: #ffffff;" />
+
+    <HBox spacing="30" alignment="CENTER_LEFT">
+        <VBox spacing="10" style="-fx-background-color: #fce4ec; -fx-padding: 25; -fx-border-radius: 10; -fx-background-radius: 10;">
+            <Label text="Total de Animais:" style="-fx-font-size: 20px;" />
+            <Label fx:id="lblTotalAnimais" text="0" style="-fx-font-size: 25px; -fx-text-fill: #d81b60;" /> 
+        </VBox>
+
+        <VBox spacing="10" style="-fx-background-color: #a1e4a1; -fx-padding: 25; -fx-border-radius: 10; -fx-background-radius: 10;">
+            <Label text=" Animais Saudáveis:" style="-fx-font-size: 20px;" />
+            <Label fx:id="lblAnimaisSaudaveis" text="0" style="-fx-font-size: 25px; -fx-text-fill: #000000c7;" />
+        </VBox>
+        
+        <VBox spacing="10" style="-fx-background-color: #fffb9d; -fx-padding: 25; -fx-border-radius: 10; -fx-background-radius: 10;">
+            <Label text=" Animais Doentes:" style="-fx-font-size: 20px;" />
+            <Label fx:id="lblAnimaisDoentes" text="0" style="-fx-font-size: 25px; -fx-text-fill: #d81b60;" /> 
+        </VBox>
+    </HBox>
+    
+    <HBox spacing="30" alignment="CENTER_LEFT">
+        <VBox spacing="10" style="-fx-background-color: #b0e0e6; -fx-padding: 25; -fx-border-radius: 10; -fx-background-radius: 10;">
+            <Label text=" Animais Adestrados:" style="-fx-font-size: 20px;" />
+            <Label fx:id="lblAdestrados" text="0" style="-fx-font-size: 25px; -fx-text-fill: #000000c7;" /> 
+        </VBox>
+        
+        <VBox spacing="10" style="-fx-background-color: #ffcc99; -fx-padding: 25; -fx-border-radius: 10; -fx-background-radius: 10;">
+            <Label text=" Em Adestramento:" style="-fx-font-size: 20px;" />
+            <Label fx:id="lblEmAdestramento" text="0" style="-fx-font-size: 25px; -fx-text-fill: #d81b60;" /> 
+        </VBox>
+    </HBox>
+    
+    <VBox spacing="10" alignment="CENTER_LEFT" style="-fx-background-color: #ffffff; -fx-padding: 5; -fx-border-radius: 5; -fx-background-radius: 5;">
+        <Label text="Visualizar Gráfico por:" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+        
+        <ComboBox fx:id="comboOpcoesGrafico" promptText="Selecione a Categoria" /> <PieChart fx:id="pieChartStatus" title="Status dos Animais" /> </VBox>
+
+</VBox>
