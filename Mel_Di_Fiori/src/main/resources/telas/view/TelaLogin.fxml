@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="crud_colmeia.LoginController"
+            style="-fx-background-color: linear-gradient(to bottom, #8d6035, #6b4c2a);"
+            AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" 
+            AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+
+    <!-- Container principal centralizado -->
+    <VBox spacing="30" alignment="CENTER" 
+          AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" 
+          AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+        
+        <!-- Logo maior para tela cheia -->
+        <ImageView fitWidth="300" fitHeight="300" preserveRatio="true">
+            <image>
+                <Image url="@/imagens/Logo06.png"/>
+            </image>
+        </ImageView>
+
+        <!-- Título -->
+        <Label text="Sistema de Adestramento" 
+               style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 5, 0, 0, 2);"/>
+
+        <!-- Container do formulário -->
+        <VBox spacing="20" style="-fx-background-color: rgba(255,255,255,0.15); -fx-background-radius: 15; -fx-padding: 40; -fx-border-color: rgba(255,255,255,0.3); -fx-border-width: 2; -fx-border-radius: 15;">
+            
+            <Label text="Login" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: white; -fx-alignment: center; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 3, 0, 0, 1);"/>
+            
+            <!-- Campo Usuário -->
+            <VBox spacing="8">
+                <Label text="Usuário:" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16px;"/>
+                <TextField fx:id="txtUsuario" promptText="Digite seu usuário" 
+                          style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-pref-height: 45; -fx-font-size: 16px; -fx-pref-width: 300;"/>
+            </VBox>
+
+            <!-- Campo Senha -->
+            <VBox spacing="8">
+                <Label text="Senha:" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16px;"/>
+                <PasswordField fx:id="txtSenha" promptText="Digite sua senha" 
+                              style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-pref-height: 45; -fx-font-size: 16px; -fx-pref-width: 300;"/>
+            </VBox>
+
+            <!-- Mensagem de erro -->
+            <Label fx:id="lblMensagem" style="-fx-text-fill: #ff6b6b; -fx-font-weight: bold; -fx-font-size: 14px; -fx-alignment: center;" 
+                   visible="false" wrapText="true" maxWidth="300"/>
+
+            <!-- Botões -->
+            <HBox spacing="20" alignment="CENTER">
+                <Button text="Entrar" onAction="#fazerLogin" 
+                       style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16px; -fx-pref-width: 120; -fx-pref-height: 45; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 2);"/>
+                <Button text="Sair" onAction="#sair" 
+                       style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16px; -fx-pref-width: 120; -fx-pref-height: 45; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 2);"/>
+            </HBox>
+
+        </VBox>
+
+        <!-- Ajuda de navegação -->
+        <Label text="Dica: Use TAB para navegar entre os campos e ENTER para fazer login" 
+               style="-fx-text-fill: #e0e0e0; -fx-font-size: 12px; -fx-wrap-text: true; -fx-alignment: center;"/>
+
+    </VBox>
+
+</AnchorPane>

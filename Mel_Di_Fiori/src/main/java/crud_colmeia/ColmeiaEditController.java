@@ -12,7 +12,6 @@ import java.io.IOException;
 
 public class ColmeiaEditController {
 
-    // Campos do formulário
     @FXML private TextField txtNumero;
     @FXML private DatePicker DataDeNascimento;
     @FXML private TextField txtLocalizacao;
@@ -22,36 +21,88 @@ public class ColmeiaEditController {
     @FXML private TextArea txtObservacoes;
 
     private Animais animalEditado;
+    private boolean inicializado = false;
 
     @FXML
     public void initialize() {
-        // Configurar comboboxes e spinner igual ao create
-        comboSituacao.getItems().addAll("Saudavel", "doente", "adestrado", "Em adestramento");
-        comboRaça.getItems().addAll("Árabe", "Mangalarga Marchador", "Puro Sangue", "Percheron", "Paint Horse", "Outros");
-        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 20, 10);
-        spinnerPeso.setValueFactory(valueFactory);
-    }
-
-    // Método para receber o objeto a ser editado
-    public void setAnimal(Animais animal) {
-        this.animalEditado = animal;
-        popularCampos();
-    }
-
-    // Popular os campos com os dados do animal recebido
-    private void popularCampos() {
+        System.out.println("✅ ColmeiaEditController inicializado");
+        
+        // Configurar comboboxes e spinner
+        if (comboSituacao != null) {
+            comboSituacao.getItems().addAll("Saudavel", "doente", "adestrado", "Em adestramento");
+        }
+        if (comboRaça != null) {
+            comboRaça.getItems().addAll("Árabe", "Mangalarga Marchador", "Puro Sangue", "Percheron", "Paint Horse", "Outros");
+        }
+        if (spinnerPeso != null) {
+            SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 20, 10);
+            spinnerPeso.setValueFactory(valueFactory);
+        }
+        
+        inicializado = true;
+        
+        // Se já tiver um animal para editar, popula os campos
         if (animalEditado != null) {
-            txtNumero.setText(animalEditado.getIdentificacao());
-            DataDeNascimento.setValue(animalEditado.getDataDeNascimento());
-            txtLocalizacao.setText(animalEditado.getLocalizacao());
-            comboSituacao.setValue(animalEditado.getStatus());
-            comboRaça.setValue(animalEditado.getRaça());
-            spinnerPeso.getValueFactory().setValue(animalEditado.getPeso());
-            txtObservacoes.setText(animalEditado.getObservacoes());
+            popularCampos();
         }
     }
 
-    // Validação visual dos campos obrigatórios, igual ao create
+    public void setAnimal(Animais animal) {
+        this.animalEditado = animal;
+        System.out.println("📝 Animal recebido para edição: " + animal);
+        
+        // Se já estiver inicializado, popula os campos imediatamente
+        if (inicializado) {
+            popularCampos();
+        }
+    }
+
+    private void popularCampos() {
+        if (animalEditado != null) {
+            System.out.println("🔄 Populando campos com dados do animal...");
+            
+            safeSetText(txtNumero, animalEditado.getIdentificacao());
+            safeSetDate(DataDeNascimento, animalEditado.getDataDeNascimento());
+            safeSetText(txtLocalizacao, animalEditado.getLocalizacao());
+            safeSetCombo(comboSituacao, animalEditado.getStatus());
+            safeSetCombo(comboRaça, animalEditado.getRaça());
+            safeSetSpinner(spinnerPeso, animalEditado.getPeso());
+            safeSetText(txtObservacoes, animalEditado.getObservacoes());
+        }
+    }
+
+    // Métodos auxiliares para evitar NullPointerException
+    private void safeSetText(TextField field, String value) {
+        if (field != null && value != null) {
+            field.setText(value);
+        }
+    }
+
+    private void safeSetText(TextArea area, String value) {
+        if (area != null && value != null) {
+            area.setText(value);
+        }
+    }
+
+    private void safeSetDate(DatePicker picker, java.time.LocalDate value) {
+        if (picker != null && value != null) {
+            picker.setValue(value);
+        }
+    }
+
+    private void safeSetCombo(ComboBox<String> combo, String value) {
+        if (combo != null && value != null) {
+            combo.setValue(value);
+        }
+    }
+
+    private void safeSetSpinner(Spinner<Integer> spinner, Integer value) {
+        if (spinner != null && value != null && spinner.getValueFactory() != null) {
+            spinner.getValueFactory().setValue(value);
+        }
+    }
+
+    // Validação visual dos campos obrigatórios
     private boolean validarCamposComVisual() {
         limparEstiloErro();
 
@@ -82,7 +133,9 @@ public class ColmeiaEditController {
     }
 
     private void colocarBordaVermelha(Control campo) {
-        campo.setStyle("-fx-border-color: red; -fx-border-width: 2;");
+        if (campo != null) {
+            campo.setStyle("-fx-border-color: red; -fx-border-width: 2;");
+        }
     }
 
     private void limparEstiloErro() {
@@ -94,7 +147,9 @@ public class ColmeiaEditController {
     }
 
     private void limparBordaVermelha(Control campo) {
-        campo.setStyle("");
+        if (campo != null) {
+            campo.setStyle("");
+        }
     }
 
     // Botão salvar alterações
@@ -141,7 +196,7 @@ public class ColmeiaEditController {
         }
     }
 
-    // Botão cancelar edição - volta para a lista
+    // Botão cancelar edição
     @FXML
     private void cancelar() {
         voltarParaLista();
