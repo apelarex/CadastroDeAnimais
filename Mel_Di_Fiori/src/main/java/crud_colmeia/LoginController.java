@@ -178,6 +178,29 @@ public class LoginController {
         });
     }
 
+    // Métodos adicionados para corrigir os erros - eventos do "Esqueci a senha"
+    @FXML
+    private void onHoverEsqueciSenha() {
+        // Método para quando o mouse entrar sobre "Esqueci a senha"
+        System.out.println("Mouse sobre 'Esqueci a senha'");
+    }
+
+    @FXML
+    private void onHoverEsqueciSenhaSair() {
+        // Método para quando o mouse sair de "Esqueci a senha"
+        System.out.println("Mouse saiu de 'Esqueci a senha'");
+    }
+
+    @FXML
+    private void onClickEsqueciSenha() {
+        // Método para quando clicar em "Esqueci a senha"
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle("Esqueci a Senha");
+        alerta.setHeaderText("Recuperação de Senha");
+        alerta.setContentText("Entre em contato com o administrador do sistema.\nUsuário: matheus\nSenha: 2107");
+        alerta.showAndWait();
+    }
+
     // Métodos para melhorar a experiência do usuário
     @FXML
     private void onUsuarioClicked() {

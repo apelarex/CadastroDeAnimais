@@ -14,11 +14,11 @@
             AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
 
     <!-- Container principal centralizado -->
-    <VBox spacing="30" alignment="CENTER" 
+    <VBox spacing="20" alignment="CENTER" 
           AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" 
           AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
         
-        <!-- Logo maior para tela cheia -->
+        <!-- Logo -->
         <ImageView fitWidth="300" fitHeight="300" preserveRatio="true">
             <image>
                 <Image url="@/imagens/Logo06.png"/>
@@ -29,42 +29,46 @@
         <Label text="Sistema de Adestramento" 
                style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 5, 0, 0, 2);"/>
 
-        <!-- Container do formulário -->
-        <VBox spacing="20" style="-fx-background-color: rgba(255,255,255,0.15); -fx-background-radius: 15; -fx-padding: 40; -fx-border-color: rgba(255,255,255,0.3); -fx-border-width: 2; -fx-border-radius: 15;">
-            
-            <Label text="Login" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: white; -fx-alignment: center; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 3, 0, 0, 1);"/>
+        <!-- Formulário sem o retângulo transparente -->
+        <VBox spacing="15" alignment="CENTER">
             
             <!-- Campo Usuário -->
-            <VBox spacing="8">
-                <Label text="Usuário:" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16px;"/>
+            <VBox spacing="5" alignment="CENTER">
+                <Label text="Usuário:" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px;"/>
                 <TextField fx:id="txtUsuario" promptText="Digite seu usuário" 
-                          style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-pref-height: 45; -fx-font-size: 16px; -fx-pref-width: 300;"/>
+                          style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-pref-height: 35; -fx-font-size: 14px; -fx-pref-width: 200; -fx-max-width: 200; -fx-background-color: white;"/>
             </VBox>
 
             <!-- Campo Senha -->
-            <VBox spacing="8">
-                <Label text="Senha:" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16px;"/>
+            <VBox spacing="5" alignment="CENTER">
+                <Label text="Senha:" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px;"/>
                 <PasswordField fx:id="txtSenha" promptText="Digite sua senha" 
-                              style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-pref-height: 45; -fx-font-size: 16px; -fx-pref-width: 300;"/>
+                              style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-pref-height: 35; -fx-font-size: 14px; -fx-pref-width: 200; -fx-max-width: 200; -fx-background-color: white;"/>
             </VBox>
 
+            <!-- Link "Esqueci minha senha" -->
+            <Button text="Esqueci minha senha" 
+                   style="-fx-background-color: transparent; -fx-text-fill: #e0e0e0; -fx-font-size: 12px; -fx-underline: true; -fx-padding: 5;"
+                   onMouseEntered="#onHoverEsqueciSenha"
+                   onMouseExited="#onHoverEsqueciSenhaSair"/>
+
             <!-- Mensagem de erro -->
-            <Label fx:id="lblMensagem" style="-fx-text-fill: #ff6b6b; -fx-font-weight: bold; -fx-font-size: 14px; -fx-alignment: center;" 
-                   visible="false" wrapText="true" maxWidth="300"/>
+            <Label fx:id="lblMensagem" style="-fx-text-fill: #ff6b6b; -fx-font-weight: bold; -fx-font-size: 12px; -fx-alignment: center;" 
+                   visible="false" wrapText="true" maxWidth="250"/>
 
             <!-- Botões -->
-            <HBox spacing="20" alignment="CENTER">
+            <HBox spacing="15" alignment="CENTER">
                 <Button text="Entrar" onAction="#fazerLogin" 
-                       style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16px; -fx-pref-width: 120; -fx-pref-height: 45; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 2);"/>
+                       style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-pref-width: 100; -fx-pref-height: 35; -fx-background-radius: 8;"/>
                 <Button text="Sair" onAction="#sair" 
-                       style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16px; -fx-pref-width: 120; -fx-pref-height: 45; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 2);"/>
+                       style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-pref-width: 100; -fx-pref-height: 35; -fx-background-radius: 8;"/>
             </HBox>
 
         </VBox>
 
         <!-- Ajuda de navegação -->
         <Label text="Dica: Use TAB para navegar entre os campos e ENTER para fazer login" 
-               style="-fx-text-fill: #e0e0e0; -fx-font-size: 12px; -fx-wrap-text: true; -fx-alignment: center;"/>
+               style="-fx-text-fill: #e0e0e0; -fx-font-size: 11px; -fx-wrap-text: true; -fx-alignment: center; -fx-padding: 10;"/>
 
     </VBox>
 
